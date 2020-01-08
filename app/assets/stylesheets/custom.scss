@@ -1,13 +1,20 @@
 @import url("https://fonts.googleapis.com/css?family=Fira+Sans");
 
+/** GENERAL */
+
 body {
-    font-family: "Fira Sans", sans-serif;
+  font-family: "Fira Sans", sans-serif;
 }
 
 #container {
-    width: 100%;
-    display: inline-block;
+  width: 100%;
+  display: inline-block;
   }
+
+.field input, .actions input, {
+  padding: 1%;
+  border-radius: 25px;
+}
   
   /** NAVIGATION BAR */
   nav {
@@ -21,14 +28,14 @@ body {
       list-style-type: none;
       list-style-type: none;
       margin: 0;
-      padding: 15px;
+      padding: 1%;
       li {
         display: inline;
-        font-size: 17px;
+        font-size: 100%;
         a {
           color: #f2f2f2;
           text-decoration: none;
-          padding: 14px;
+          padding: 1%;
           &:hover {
             background-color: #111;
           }
@@ -40,5 +47,13 @@ body {
   /** FORM */
 
   .form {
-    
+    h2 {
+      padding-top: 1%;
+      padding-left: 1%;
+    }
+    .field, .actions {
+      font-size: 100%;
+      padding: 1%;
+      border-radius: 1%;
+    }
   }
