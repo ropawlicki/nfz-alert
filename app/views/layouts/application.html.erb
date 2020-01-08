@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>NfzAlert</title>
+    <title>NFZAlert</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,16 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class='container'>
+      <nav>
+        <div id='navigation-bar'>
+          <ul>
+            <li><%= link_to 'Strona główna' %></li>
+            <li><%= link_to 'Stub 1' %></li>
+          </ul>
+        </div>
+      </nav>
+      <%= yield %>
+    </div>
   </body>
 </html>
