@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Fira+Sans");
 
+$main-color: #20A0D8;
+
 /** GENERAL */
 
 body {
@@ -10,16 +12,11 @@ body {
   width: 100%;
   display: inline-block;
   }
-
-.field input, .actions input, {
-  padding: 1%;
-  border-radius: 25px;
-}
   
   /** NAVIGATION BAR */
   nav {
     overflow: hidden;
-    background-color: #333;
+    background-color: $main-color;
     position: sticky;
     top: 0;
     width: 100%;
@@ -56,4 +53,29 @@ body {
       padding: 1%;
       border-radius: 1%;
     }
+    .field input, .actions input {
+      padding: 1%;
+      border-radius: 25px;
+      outline: none;
+    }
+    .actions input {
+      background-color: $main-color;
+      color: white
+    }
+    a {
+      padding: 2%;
+      padding-top: 2%;
+    }
+  }
+
+  /** ERROR MESSAGES */
+
+  #error_explanation {
+    border: solid;
+    border-color: #ff6464;
+    background-color: #ffb99a;
+    width: fit-content;
+    padding-right: 10%;
+    margin-bottom: 1%;
+    margin-left: 1%;
   }
