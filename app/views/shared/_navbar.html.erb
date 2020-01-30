@@ -1,0 +1,13 @@
+<nav>
+  <div id='navigation-bar'>
+    <ul>
+      <li><%= link_to 'Strona główna', new_user_session_path %></li>
+      <% if current_user && current_user.admin? %>
+        <li><%= link_to('Panel administratora', admin_index_path, method: :get)%></li>
+      <% end %>
+      <% if current_user %>
+        <li><%= link_to('Wyloguj się', destroy_user_session_path, method: :delete)%></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
