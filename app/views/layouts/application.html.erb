@@ -13,14 +13,7 @@
 
   <body>
     <div class='container'>
-      <nav>
-        <div id='navigation-bar'>
-          <ul>
-            <li><%= link_to 'Strona główna' %></li>
-            <li><%= link_to 'Stub 1' %></li>
-          </ul>
-        </div>
-      </nav>
+      <%= render 'shared/navbar' %>
       <%= yield %>
     </div>
   </body>
