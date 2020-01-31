@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  case: 1
+  province: MyString
+  locality: MyString
+
+two:
+  user: two
+  case: 1
+  province: MyString
+  locality: MyString
