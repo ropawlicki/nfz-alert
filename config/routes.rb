@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'query/create'
+  get 'query/destroy'
+  get 'query/fetch'
   get 'admin/index'
   get 'admin/new_password'
   post 'admin/update_password'

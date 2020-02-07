@@ -11,9 +11,12 @@ class AdminController < ApplicationController
   def update_password
     user = User.find(params[:id])
     user.password = params[:new_password]
-    user.save
-    p "NEW PASSWORD IS ", user.password
-    redirect_to admin_index_path
+    if user.save
+      redirect_to admin_index_path
+    else
+      flash[:alert] = user.errors.full_messages
+      redirect_to admin_new_password_path
+    end
   end
 
   def destroy

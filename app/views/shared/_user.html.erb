@@ -1,7 +1,7 @@
 <p>
-  <%= user.email %>
-  <%= link_to "Zmień hasło", admin_new_password_path(id: user.id) %>
   <% if user != current_user %>
-    <%= link_to "Usuń", admin_destroy_path(id: user.id), data: {confirm: "Czy jesteś pewien?"} %>
+    <%= user.email %>
+    <%= link_to "Zmień hasło", admin_new_password_path(id: user.id) %>
+    <%= link_to "Usuń", admin_destroy_path(id: user.id), data: {confirm: "Czy na pewno?"} %>
   <% end %>
 </p>
