@@ -10,20 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_31_141236) do
+ActiveRecord::Schema.define(version: 2020_02_14_111200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "queries", force: :cascade do |t|
-    t.bigint "user_id", null: false
     t.integer "case"
     t.string "province"
     t.string "locality"
+    t.string "benefit"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "benefit"
-    t.index ["user_id"], name: "index_queries_on_user_id"
+    t.json "result"
+    t.index ["case", "province", "locality", "benefit"], name: "index_queries_on_case_and_province_and_locality_and_benefit", unique: true
+  end
+
+  create_table "user_queries", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "query_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["query_id"], name: "index_user_queries_on_query_id"
+    t.index ["user_id", "query_id"], name: "index_user_queries_on_user_id_and_query_id", unique: true
+    t.index ["user_id"], name: "index_user_queries_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -39,5 +49,6 @@ ActiveRecord::Schema.define(version: 2020_01_31_141236) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "queries", "users"
+  add_foreign_key "user_queries", "queries"
+  add_foreign_key "user_queries", "users"
 end
