@@ -24,7 +24,9 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise', '~> 4.7.0'
 gem 'httparty', '~> 0.17.3'
 gem 'bootstrap', '~> 4.4.1'
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 4.3.5'
+gem 'sidekiq', '~> 6.0.5'
+gem 'sidekiq-scheduler', '~> 3.0.1'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

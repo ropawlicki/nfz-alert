@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_14_111200) do
+ActiveRecord::Schema.define(version: 2020_02_28_081839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "province_codes", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "queries", force: :cascade do |t|
     t.integer "case"
@@ -22,8 +29,34 @@ ActiveRecord::Schema.define(version: 2020_02_14_111200) do
     t.string "benefit"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.json "result"
     t.index ["case", "province", "locality", "benefit"], name: "index_queries_on_case_and_province_and_locality_and_benefit", unique: true
+  end
+
+  create_table "query_results", force: :cascade do |t|
+    t.bigint "query_id", null: false
+    t.bigint "result_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["query_id", "result_id"], name: "index_query_results_on_query_id_and_result_id", unique: true
+    t.index ["query_id"], name: "index_query_results_on_query_id"
+    t.index ["result_id"], name: "index_query_results_on_result_id"
+  end
+
+  create_table "results", force: :cascade do |t|
+    t.string "benefit"
+    t.string "provider"
+    t.string "place"
+    t.string "address"
+    t.string "phone"
+    t.string "toilet"
+    t.string "ramp"
+    t.string "car-park"
+    t.string "elevator"
+    t.boolean "fresh", default: true
+    t.boolean "active", default: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["benefit", "provider", "place", "address"], name: "index_results_on_benefit_and_provider_and_place_and_address", unique: true
   end
 
   create_table "user_queries", force: :cascade do |t|
@@ -49,6 +82,8 @@ ActiveRecord::Schema.define(version: 2020_02_14_111200) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "query_results", "queries"
+  add_foreign_key "query_results", "results"
   add_foreign_key "user_queries", "queries"
   add_foreign_key "user_queries", "users"
 end

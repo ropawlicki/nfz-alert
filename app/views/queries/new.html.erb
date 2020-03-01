@@ -1,0 +1,22 @@
+<div class='form'>
+
+  <%= form_with(url: queries_create_path, method: :post) do |f| %>
+    <%= render 'shared/flash_alert' %>
+    <label class="category-select">
+      <%= f.check_box :case, {}, 1, 2  %>
+      Pilny przypadek
+    </label>
+    <div class="field">
+      <%= f.text_field :benefit, placeholder: "Świadczenie" %>
+    </div>
+    <div class="field">
+      <%= f.text_field :locality, placeholder: "Miejscowość" %>
+    </div>
+    <div class="field">
+      <%= f.select(:province, ProvinceCode.all.collect {|p| [ p.name, p.code] }) %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Zapisz" %>
+    </div>
+  <% end %>
+</div>

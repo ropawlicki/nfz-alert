@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  benefit: MyString
+  provider: MyString
+  place: MyString
+  address: MyString
+  phone: MyString
+  toilet: MyString
+  ramp: MyString
+  car-park: MyString
+  elevator: MyString
+  fresh: false
+  active: false
+
+two:
+  benefit: MyString
+  provider: MyString
+  place: MyString
+  address: MyString
+  phone: MyString
+  toilet: MyString
+  ramp: MyString
+  car-park: MyString
+  elevator: MyString
+  fresh: false
+  active: false

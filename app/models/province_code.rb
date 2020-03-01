@@ -1,0 +1,2 @@
+class ProvinceCode < ApplicationRecord
+end

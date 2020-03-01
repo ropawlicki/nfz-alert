@@ -16,5 +16,9 @@ module NfzAlert
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     config.i18n.default_locale = :pl
+
+    Sidekiq.configure_server do |config|
+      config.average_scheduled_poll_interval = 0.2
+    end
   end
 end
