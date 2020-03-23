@@ -8,9 +8,9 @@
       <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "E-mail" %>
     </div>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <!--<% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-    <% end %>
+    <% end %>-->
 
     <div class="field">
       <%= f.password_field :current_password, autocomplete: "current-password", placeholder: "Stare hasło" %>

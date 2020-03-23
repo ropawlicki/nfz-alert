@@ -28,8 +28,6 @@ class AdminController < ApplicationController
   private
 
     def admin_check
-      if !current_user.admin?
-        redirect_to authenticated_root_path
-      end
+      redirect_to authenticated_root_path if !current_user.admin?
     end
 end

@@ -10,6 +10,8 @@ class CreateResults < ActiveRecord::Migration[6.0]
       t.string :ramp
       t.string :'car-park'
       t.string :elevator
+      t.string :locality
+      t.string :date
       t.boolean :fresh, default: true
       t.boolean :active, default: true
 

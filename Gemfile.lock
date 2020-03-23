@@ -205,6 +205,8 @@ GEM
       rack (~> 2.0)
       rack-protection (>= 2.0.0)
       redis (>= 4.1.0)
+    sidekiq-batch (0.1.6)
+      sidekiq (>= 3)
     sidekiq-scheduler (3.0.1)
       e2mmap
       redis (>= 3, < 5)
@@ -273,6 +275,7 @@ DEPENDENCIES
   sass-rails (>= 6)
   selenium-webdriver
   sidekiq (~> 6.0.5)
+  sidekiq-batch (~> 0.1.6)
   sidekiq-scheduler (~> 3.0.1)
   spring
   spring-watcher-listen (~> 2.0.0)

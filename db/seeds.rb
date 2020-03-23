@@ -6,15 +6,39 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# User seed
+
 (1..20).each do |n|
-  User.create(email: "user#{n}@example.com", password: "123456")
+  user = User.new(email: "user#{n}@example.com", password: "123456")
+  user.skip_confirmation!
+  user.save!
 end
 
 (1..3).each do |n|
-  User.create(email: "admin#{n}@example.com", password: "123456", admin: true)
+  user = User.new(email: "admin#{n}@example.com", password: "123456", admin: true)
+  user.skip_confirmation!
+  user.confirm!
+  user.save!
 end
 
-# Provinces code for API queries
+# Query seed
+
+Query.create(id: 1, case: 1, province: "07", locality: "warszawa", benefit: "alergolog")
+Query.create(id: 2, case: 2, province: "01", locality: "wrocław", benefit: "kardiolog")
+Query.create(id: 3, case: 1, province: "06", locality: "kraków", benefit: "endokrynolog")
+Query.create(id: 4, case: 1, province: "12", locality: "katowice", benefit: "alergolog")
+Query.create(id: 5, case: 1, province: "07", locality: "warszawa", benefit: "alergolog")
+
+# UserQuery seed
+
+UserQuery.create(user_id: 1 , query_id: 1)
+UserQuery.create(user_id: 1 , query_id: 2)
+UserQuery.create(user_id: 2 , query_id: 2)
+UserQuery.create(user_id: 2 , query_id: 3)
+UserQuery.create(user_id: 3 , query_id: 1)
+UserQuery.create(user_id: 3 , query_id: 2)
+
+# Province codes for API queries
 
 ProvinceCode.create(name: 'dolnośląskie', code: '01')
 ProvinceCode.create(name: 'kujawsko-pomorskie', code: '02')

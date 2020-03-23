@@ -1,4 +1,10 @@
-#:schedule:
-#  stub_worker:
-#    cron: '0 * * * * *'   # Runs once per minute
-#    class: StubWorker
+:schedule:
+  update_start:
+    cron: '0 0 4 * * *'
+    class: UpdateStartBatch
+
+:queues:
+  
+  - critical
+  - default
+  - low

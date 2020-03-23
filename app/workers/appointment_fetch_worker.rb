@@ -1,26 +1,25 @@
 class AppointmentFetchWorker
   include Sidekiq::Worker
+  sidekiq_options retry: false
 
-  def perform(query_id, next_link=false)
-    response = ResponseRetriever.call(query_id, next_link)
-
-    valid_keys = ["benefit", "provider", "place", "address", "phone", "toilet", "ramp", "car-park", "elevator"]
-
-    response["data"].each do |response|
-      response = response["attributes"].slice(*valid_keys)
-      result = Result.find_by(benefit: response["benefit"], provider: response["provider"], place: response["place"],
-        address: response["address"])
-      if result.nil?
-        result = Result.create(response)
-      else
-        result.update_attribute(:active, true)
+  def perform(query_id, page, retries=1)
+    b = Sidekiq::Batch.new
+    b.jobs do
+      begin
+        response = ResponseRetriever.call(query_id, page)
+        ResponseSaver.call(response, query_id)
+      rescue StandardError => e
+        puts response["attributes"]
+        puts e.message
+        puts "ATTEMPTING #{retries} RETRY"  
+        if retries < 2
+          AppointmentFetchWorker.perform_in(5, query_id, page, retries+1)
+        else
+          puts("GAVE UP AFTER #{retries} RETRIES")
+          raise StandardError
+        end
       end
-      result.query_results.find_or_create_by(query_id: query_id)
-    end
-
-    if response["links"]["next"]
-      AppointmentFetchWorker.perform_in((0.2).seconds, query_id, response["links"]["next"])
-    end
+    end 
   end
 
 end
