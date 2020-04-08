@@ -20,5 +20,7 @@ module NfzAlert
     Sidekiq.configure_server do |config|
       config.average_scheduled_poll_interval = 0.2
     end
+
+    config.active_job.queue_adapter = :sidekiq
   end
 end

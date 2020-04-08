@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get 'queries/new'
+  get 'query', to: 'queries#result_display'
+  get 'queries', to: 'queries#index'
   post 'queries/create'
   post 'benefits/fetch'
   get 'admin/index'

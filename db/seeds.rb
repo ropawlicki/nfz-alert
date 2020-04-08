@@ -3,22 +3,18 @@
 #
 # Examples:
 #
+
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # User seed
 
 (1..20).each do |n|
-  user = User.new(email: "user#{n}@example.com", password: "123456")
-  user.skip_confirmation!
-  user.save!
+  User.create(email: "user#{n}@example.com", password: "123456", confirmed_at: DateTime.now)
 end
 
 (1..3).each do |n|
-  user = User.new(email: "admin#{n}@example.com", password: "123456", admin: true)
-  user.skip_confirmation!
-  user.confirm!
-  user.save!
+  User.create(email: "admin#{n}@example.com", password: "123456", admin: true, confirmed_at: DateTime.now)
 end
 
 # Query seed
@@ -40,19 +36,19 @@ UserQuery.create(user_id: 3 , query_id: 2)
 
 # Province codes for API queries
 
-ProvinceCode.create(name: 'dolnośląskie', code: '01')
-ProvinceCode.create(name: 'kujawsko-pomorskie', code: '02')
-ProvinceCode.create(name: 'lubelskie', code: '03')
-ProvinceCode.create(name: 'lubuskie', code: '04')
-ProvinceCode.create(name: 'łódzkie', code: '05')
-ProvinceCode.create(name: 'małopolskie', code: '06')
-ProvinceCode.create(name: 'mazowieckie', code: '07')
-ProvinceCode.create(name: 'opolskie', code: '08')
-ProvinceCode.create(name: 'podkarpackie', code: '09')
-ProvinceCode.create(name: 'podlaskie', code: '10')
-ProvinceCode.create(name: 'pomorskie', code: '11')
-ProvinceCode.create(name: 'śląskie', code: '12')
-ProvinceCode.create(name: 'świętokrzyskie', code: '13')
-ProvinceCode.create(name: 'warmińsko-mazurskie', code: '14')
-ProvinceCode.create(name: 'wielkopolskie', code: '15')
-ProvinceCode.create(name: 'zachodnio-pomorskie', code: '16')
+ProvinceCode.create(name: 'Dolnośląskie', code: '01')
+ProvinceCode.create(name: 'Kujawsko-pomorskie', code: '02')
+ProvinceCode.create(name: 'Lubelskie', code: '03')
+ProvinceCode.create(name: 'Lubuskie', code: '04')
+ProvinceCode.create(name: 'Łódzkie', code: '05')
+ProvinceCode.create(name: 'Małopolskie', code: '06')
+ProvinceCode.create(name: 'Mazowieckie', code: '07')
+ProvinceCode.create(name: 'Opolskie', code: '08')
+ProvinceCode.create(name: 'Podkarpackie', code: '09')
+ProvinceCode.create(name: 'Podlaskie', code: '10')
+ProvinceCode.create(name: 'Pomorskie', code: '11')
+ProvinceCode.create(name: 'Śląskie', code: '12')
+ProvinceCode.create(name: 'Świętokrzyskie', code: '13')
+ProvinceCode.create(name: 'Warmińsko-mazurskie', code: '14')
+ProvinceCode.create(name: 'Wielkopolskie', code: '15')
+ProvinceCode.create(name: 'Zachodnio-pomorskie', code: '16')

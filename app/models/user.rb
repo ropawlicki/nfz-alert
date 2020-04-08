@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable
          
-  has_many :queries, through: :user_queries
   has_many :user_queries, dependent: :destroy
+  has_many :queries, through: :user_queries
   
 end

@@ -3,7 +3,7 @@
   <%= form_with(url: queries_create_path, method: :post) do |f| %>
     <%= render 'shared/flash_alert' %>
     <label class="category-select">
-      <%= f.check_box :case, {}, 1, 2  %>
+      <%= f.check_box :case, {}, 2, 1  %>
       Pilny przypadek
     </label>
     <div class="field">

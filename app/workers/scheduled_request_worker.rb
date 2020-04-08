@@ -5,7 +5,6 @@ class ScheduledRequestWorker
     b = Sidekiq::Batch.new
     b.on(:success, ScheduledRequestWorker)
     b.jobs do
-      p "BATCH STARTED"
       ActiveResetWorker.perform_async
     end
   end

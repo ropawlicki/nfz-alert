@@ -1,0 +1,12 @@
+<h1>Nowe terminy</h1>
+
+<% @queries.each do |q| %>
+  <h2><%= q.benefit if q.results.find_by_fresh(true) %></h2>
+  <% q.results.each do |r| %>
+    <% if r.fresh? %>
+      <p><%= r.benefit %></p>
+    <% end %>
+  <% end %>
+<% end %>
+
+
