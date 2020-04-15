@@ -7,7 +7,9 @@ class UserMailer < ApplicationMailer
   #
   def update_query_email(user_id)
     user = User.find(user_id)
-    @queries = user.queries
-    mail to: "#{user.email}" if user.queries.flat_map(&:results).detect { |r| r.fresh? }
+    user_queries_ids = user.queries.map(&:id)
+    @query_results = user.user_fresh_results.map(&:result).group_by { |r| r.queries.where(id: user_queries_ids).first }
+    mail to: "#{user.email}"
+    user.user_fresh_results.destroy_all
   end
 end

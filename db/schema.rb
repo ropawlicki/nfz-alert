@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_23_095720) do
+ActiveRecord::Schema.define(version: 2020_04_09_085308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,11 +54,20 @@ ActiveRecord::Schema.define(version: 2020_03_23_095720) do
     t.string "elevator"
     t.string "locality"
     t.string "date"
-    t.boolean "fresh", default: true
     t.boolean "active", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["benefit", "provider", "place", "address"], name: "index_results_on_benefit_and_provider_and_place_and_address", unique: true
+  end
+
+  create_table "user_fresh_results", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "result_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["result_id"], name: "index_user_fresh_results_on_result_id"
+    t.index ["user_id", "result_id"], name: "index_user_fresh_results_on_user_id_and_result_id", unique: true
+    t.index ["user_id"], name: "index_user_fresh_results_on_user_id"
   end
 
   create_table "user_queries", force: :cascade do |t|

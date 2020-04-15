@@ -34,6 +34,10 @@ UserQuery.create(user_id: 2 , query_id: 3)
 UserQuery.create(user_id: 3 , query_id: 1)
 UserQuery.create(user_id: 3 , query_id: 2)
 
+# Download results
+
+UpdateStartBatch.perform_async
+
 # Province codes for API queries
 
 ProvinceCode.create(name: 'Dolnośląskie', code: '01')
