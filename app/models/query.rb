@@ -9,6 +9,11 @@ class Query < ApplicationRecord
 
   before_validation :capitalize_parameters, on: :create
 
+  def decode_province!
+    self.province = ProvinceCode.find_by_code(self.province).name
+    self
+  end
+
   private
   
     def capitalize_parameters

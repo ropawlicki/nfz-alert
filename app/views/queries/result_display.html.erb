@@ -1,4 +1,17 @@
-<%= javascript_pack_tag 'set_close_time' %>
+<%= content_for :meta do %>
+  <!---<meta name="turbolinks-visit-control" content="reload">--->
+<% end %>
 
-<%= render partial: "shared/result", collection: @query_results %>
+<!---<body data-turbolinks="false">--->
+
+<%= content_for :script do %>
+  <script>var id = <%= @user_query.id %></script>
+  <%#= javascript_pack_tag 'force_reload' %>
+  <%= javascript_pack_tag 'set_visit_time' %>
+<% end %>
+
+
+<%= render partial: "shared/result", collection: @query_results, locals: { user_query: @user_query } %>
 <%= link_to "Powrót", queries_path %>
+
+

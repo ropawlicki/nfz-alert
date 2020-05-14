@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans");
+
+$main-color: #0275d8;
+$link-color: #007bff;
+
+body {
+  font-family: "Fira Sans", sans-serif;
+}
+
+.navbar-nav {
+  margin-left: 3%;
+  margin-right: 3%
+}
+
+.nav-item {
+  margin-right: 15%;
+  white-space: nowrap
+}
+
+.container {
+  margin-left: 3%;
+  margin-right: 3%
+}
+
+.header {
+  margin-top: 4%;
+  margin-bottom: 3%;
+}
+
+.form-group { 
+    margin-bottom: 2%;
+  }
+
+  input, select {
+    padding: 1%;
+    border-radius: 5px;
+    outline: none;
+  }
+
+  .button input {
+    background-color: $main-color;
+    color: white;
+  }
+
+  .a {
+    color: $link-color;
+  }

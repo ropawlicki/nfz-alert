@@ -36,7 +36,7 @@ UserQuery.create(user_id: 3 , query_id: 2)
 
 # Download results
 
-UpdateStartBatch.perform_async
+AppointmentUpdateBatch.perform_async
 
 # Province codes for API queries
 

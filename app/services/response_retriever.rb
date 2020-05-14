@@ -7,7 +7,7 @@ class ResponseRetriever
     default_params = { format: "json", limit: 25, page: page }
     params = query_params.merge(default_params)
 
-    response = HTTParty.get("https://api.nfz.gov.pl/app-itl-api/queues", query: params)
+    HTTParty.get("https://api.nfz.gov.pl/app-itl-api/queues", query: params)
   end
 
 end

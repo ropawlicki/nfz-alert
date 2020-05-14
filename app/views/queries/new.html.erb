@@ -1,22 +1,32 @@
-<div class='form'>
+<%= content_for :script do %>
+  <%= javascript_pack_tag 'query_submission_spinner' %>
+<% end %>
 
-  <%= form_with(url: queries_create_path, method: :post) do |f| %>
-    <%= render 'shared/flash_alert' %>
-    <label class="category-select">
-      <%= f.check_box :case, {}, 2, 1  %>
-      Pilny przypadek
-    </label>
-    <div class="field">
-      <%= f.text_field :benefit, placeholder: "Świadczenie" %>
-    </div>
-    <div class="field">
-      <%= f.text_field :locality, placeholder: "Miejscowość" %>
-    </div>
-    <div class="field">
-      <%= f.select(:province, ProvinceCode.all.collect {|p| [ p.name, p.code] }) %>
-    </div>
-    <div class="actions">
-      <%= f.submit "Zapisz" %>
-    </div>
-  <% end %>
+<div class='header'>
+  <h2>Nowe wyszukiwanie</h2>
 </div>
+
+<%= flash["warning"] %>
+
+<%= form_with(url: queries_create_path, method: :post) do |f| %>
+  <%= render 'shared/flash_alert' %>
+  <div class="form-group">
+    <label class="category-select">
+      <%= f.check_box :case, {}, 2, 1  %> Pilny przypadek
+    </label>
+  </div>
+  <div class="form-group">
+    <%= f.text_field :benefit, placeholder: "Świadczenie" %>
+  </div>
+  <div class="form-group">
+    <%= f.text_field :locality, placeholder: "Miejscowość" %>
+  </div>
+  <div class="form-group">
+    <%= f.select(:province, ProvinceCode.all.collect {|p| [ p.name, p.code] }) %>
+  </div>
+  <div class="form-group button">
+    <input type="submit" name="commit" value="Zapisz" data-disable-with="Zapisz" >
+      <span class="spinner-border spinner-border-sm text-primary " role="status" id="submit_spinner"/>
+    </input>
+  </div>
+<% end %>

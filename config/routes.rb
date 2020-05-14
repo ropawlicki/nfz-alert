@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'query', to: 'queries#result_display'
   get 'queries', to: 'queries#index'
   post 'queries/create'
+  post 'visit_update/:id', to: 'queries#update_results_visit'
   post 'benefits/fetch'
   get 'admin/index'
   get 'admin/new_password'
@@ -13,7 +14,7 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     authenticated :user do
-      root 'devise/registrations#edit', as: :authenticated_root
+      root 'queries#index', as: :authenticated_root
     end
     unauthenticated do
       root 'devise/sessions#new', as: :unauthenticated_root

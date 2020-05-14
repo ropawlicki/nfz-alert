@@ -9,7 +9,6 @@ class AppointmentFetchWorker
         response = ResponseRetriever.call(query_id, page)
         ResponseSaver.call(response, query_id)
       rescue StandardError => e
-        puts response["attributes"]
         puts e.message
         puts "ATTEMPTING #{retries} RETRY"  
         if retries < 2

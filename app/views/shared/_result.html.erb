@@ -1,1 +1,6 @@
-<p><%= result.provider %></p>
+<p>
+  <%= result.provider %>
+  <% if result.created_at > @user_query.visited_results_at %>
+    <%= "NOWY !!!" %>
+  <% end %>
+</p>

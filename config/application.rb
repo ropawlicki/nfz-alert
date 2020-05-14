@@ -22,5 +22,6 @@ module NfzAlert
     end
 
     config.active_job.queue_adapter = :sidekiq
+    config.time_zone = 'Warsaw'
   end
 end

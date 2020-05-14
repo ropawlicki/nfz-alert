@@ -7,7 +7,5 @@ class User < ApplicationRecord
          
   has_many :user_queries, dependent: :destroy
   has_many :queries, through: :user_queries
-  has_many :user_fresh_results, dependent: :destroy
-  has_many :result, through: :user_fresh_results
  
 end

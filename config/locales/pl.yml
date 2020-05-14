@@ -3,8 +3,10 @@ pl:
   activerecord:
     attributes:
       user:
-        email: 'E-mail'
+        email: 'Email'
         password: 'Hasło'
+        current_password: 'Dotychczasowe hasło'
+        password_confirmation: 'Potwierdzenie hasła'
     errors:
       messages:
         record_invalid: 'Negatywne sprawdzenie poprawności: %{errors}'

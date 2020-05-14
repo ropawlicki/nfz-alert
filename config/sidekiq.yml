@@ -1,7 +1,10 @@
 :schedule:
   update_start:
-    cron: '0 0 4 * * *'
-    class: UpdateStartBatch
+    cron: '0 0 3 * * * Europe/Warsaw'
+    class: AppointmentUpdateBatch
+  query_mailer:
+    cron: '0 0 9 * * * Europe/Warsaw'
+    class: QueryMailerWorker
 
 :queues:
   

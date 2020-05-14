@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_09_085308) do
+ActiveRecord::Schema.define(version: 2020_04_27_121955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,20 +54,11 @@ ActiveRecord::Schema.define(version: 2020_04_09_085308) do
     t.string "elevator"
     t.string "locality"
     t.string "date"
-    t.boolean "active", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "validated_at", default: -> { "CURRENT_TIMESTAMP" }
+    t.datetime "mailing_ready_at"
     t.index ["benefit", "provider", "place", "address"], name: "index_results_on_benefit_and_provider_and_place_and_address", unique: true
-  end
-
-  create_table "user_fresh_results", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "result_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["result_id"], name: "index_user_fresh_results_on_result_id"
-    t.index ["user_id", "result_id"], name: "index_user_fresh_results_on_user_id_and_result_id", unique: true
-    t.index ["user_id"], name: "index_user_fresh_results_on_user_id"
   end
 
   create_table "user_queries", force: :cascade do |t|
@@ -75,6 +66,7 @@ ActiveRecord::Schema.define(version: 2020_04_09_085308) do
     t.bigint "query_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "visited_results_at", default: -> { "CURRENT_TIMESTAMP" }
     t.index ["query_id"], name: "index_user_queries_on_query_id"
     t.index ["user_id", "query_id"], name: "index_user_queries_on_user_id_and_query_id", unique: true
     t.index ["user_id"], name: "index_user_queries_on_user_id"
@@ -92,6 +84,7 @@ ActiveRecord::Schema.define(version: 2020_04_09_085308) do
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.datetime "last_sent_at", default: -> { "CURRENT_TIMESTAMP" }
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

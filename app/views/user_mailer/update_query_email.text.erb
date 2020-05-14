@@ -1,8 +1,8 @@
 Nowe terminy
 
-<% @query_results.each do |q, ar| %>
+<% @queries.each do |q| %>
   <%= q.benefit %>
-  <% ar.each do |r| %>
+  <% q.results.each do |r| %>
     <%= r.benefit %>
   <% end %>
 <% end %>

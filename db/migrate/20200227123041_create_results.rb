@@ -12,7 +12,6 @@ class CreateResults < ActiveRecord::Migration[6.0]
       t.string :elevator
       t.string :locality
       t.string :date
-      t.boolean :active, default: true
 
       t.timestamps
     end

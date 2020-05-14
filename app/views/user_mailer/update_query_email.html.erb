@@ -1,8 +1,8 @@
 <h1>Nowe terminy</h1>
 
-<% @query_results.each do |q, ar| %>
+<% @queries.each do |q| %>
   <h2><%= q.benefit %></h2>
-  <% ar.each do |r| %>
+  <% q.results.each do |r| %>
     <p><%= r.benefit %></p>
   <% end %>
 <% end %>

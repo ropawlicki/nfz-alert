@@ -3,7 +3,7 @@ class QueryMailerWorker
 
   def perform
     User.find_each do |u|
-      UserMailer.update_query_email(u.id).deliver_later if u.user_fresh_results.any?
+      UserMailer.update_query_email(u.id).deliver_later
     end
   end
   
