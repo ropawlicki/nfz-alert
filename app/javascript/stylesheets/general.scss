@@ -5,11 +5,25 @@ $link-color: #007bff;
 
 body {
   font-family: "Fira Sans", sans-serif;
+  font-size: calc(0.3em + 1vw);
 }
+
+p {
+  margin-top: 1%;
+  margin-bottom: 1%
+}
+
+//alerts
+
+.alert {
+  display: inline-block
+}
+
+//navbar
 
 .navbar-nav {
   margin-left: 3%;
-  margin-right: 3%
+  margin-right: 3%;
 }
 
 .nav-item {
@@ -17,19 +31,25 @@ body {
   white-space: nowrap
 }
 
-.container {
-  margin-left: 3%;
-  margin-right: 3%
+//container
+
+.main-box {
+  margin: 3%;
 }
+
+//header
 
 .header {
-  margin-top: 4%;
-  margin-bottom: 3%;
+  margin-top: 1%;
+  margin-bottom: 2%;
 }
 
+//forms
+
 .form-group { 
-    margin-bottom: 2%;
-  }
+  margin-top: 1%;
+  margin-bottom: 2%;
+}
 
   input, select {
     padding: 1%;
@@ -45,3 +65,14 @@ body {
   .a {
     color: $link-color;
   }
+
+//box
+
+.result-box {
+  border: 2px solid lightblue;
+  border-radius: 5px;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  padding: 1%;
+  display: flex
+}

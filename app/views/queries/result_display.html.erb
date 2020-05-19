@@ -1,12 +1,12 @@
 <%= content_for :meta do %>
-  <!---<meta name="turbolinks-visit-control" content="reload">--->
+  <meta name="turbolinks-visit-control" content="reload">
 <% end %>
 
-<!---<body data-turbolinks="false">--->
+<body data-turbolinks="false">
 
 <%= content_for :script do %>
   <script>var id = <%= @user_query.id %></script>
-  <%#= javascript_pack_tag 'force_reload' %>
+  <%= javascript_pack_tag 'force_reload' %>
   <%= javascript_pack_tag 'set_visit_time' %>
 <% end %>
 

@@ -6,7 +6,11 @@
   <h2>Nowe wyszukiwanie</h2>
 </div>
 
-<%= flash["warning"] %>
+<% if flash[:warning]%>
+  <div class="alert alert-danger" role="alert">
+    <%= flash["warning"] %>
+  </div>
+<% end %>
 
 <%= form_with(url: queries_create_path, method: :post) do |f| %>
   <%= render 'shared/flash_alert' %>

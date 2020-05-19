@@ -3,10 +3,11 @@ pl:
   activerecord:
     attributes:
       user:
-        email: 'Email'
+        email: 'E-mail'
         password: 'Hasło'
         current_password: 'Dotychczasowe hasło'
         password_confirmation: 'Potwierdzenie hasła'
+        confirmation_token: 'Token potwierdzenia'
     errors:
       messages:
         record_invalid: 'Negatywne sprawdzenie poprawności: %{errors}'
@@ -134,10 +135,10 @@ pl:
   errors:
     format: "%{attribute} %{message}"
     messages:
-      accepted: musi zostać zaakceptowane
-      blank: nie może być puste
+      accepted: musi przejść akceptację
+      blank: należy wypełnić
       confirmation: nie zgadza się z polem %{attribute}
-      empty: nie może być puste
+      empty: należy wypełnić
       equal_to: musi być równe %{count}
       even: musi być parzyste
       exclusion: jest zarezerwowane
@@ -153,22 +154,22 @@ pl:
       other_than: musi być inna niż %{count}
       present: musi być puste
       required: musi istnieć
-      taken: zostało już zajęte
+      taken: jest już w użyciu
       too_long:
-        one: jest za długie (maksymalnie jeden znak)
-        few: jest za długie (maksymalnie %{count} znaki)
-        many: jest za długie (maksymalnie %{count} znaków)
-        other: jest za długie (maksymalnie %{count} znaków)
+        one: ma zbyt dużą ilość znaków (maksymalnie jeden)
+        few: ma zbyt dużą ilość znaków (maksymalnie %{count})
+        many: ma zbyt dużą ilość znaków (maksymalnie %{count})
+        other: ma zbyt dużą ilość znaków (maksymalnie %{count})
       too_short:
-        one: jest za krótkie (przynajmniej jeden znak)
-        few: jest za krótkie (przynajmniej %{count} znaki)
-        many: jest za krótkie (przynajmniej %{count} znaków)
-        other: jest za krótkie (przynajmniej %{count} znaków)
+        one: ma zbyt małą ilość znaków (potrzebny przynajmniej jeden)
+        few: ma zbyt małą ilość znaków (potrzeba przynajmniej %{count})
+        many: ma zbyt małą ilość znaków (potrzeba przynajmniej %{count})
+        other: ma zbyt małą ilość znaków (potrzeba przynajmniej %{count})
       wrong_length:
         one: ma nieprawidłową długość (powinna wynosić jeden znak)
-        few: ma nieprawidłową długość (powinna wynosić %{count} znaki)
-        many: ma nieprawidłową długość (powinna wynosić %{count} znaków)
-        other: ma nieprawidłową długość (powinna wynosić %{count} znaków)
+        few: ma nieprawidłową długość (powinna wynosić %{count})
+        many: ma nieprawidłową długość (powinna wynosić %{count})
+        other: ma nieprawidłową długość (powinna wynosić %{count})
     template:
       body: 'Błędy dotyczą następujących pól:'
       header:

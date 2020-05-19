@@ -6,6 +6,7 @@ class AdminController < ApplicationController
   end
 
   def new_password
+    @user = User.find(params[:id])
   end
 
   def update_password
@@ -15,7 +16,7 @@ class AdminController < ApplicationController
       redirect_to admin_index_path
     else
       flash[:alert] = user.errors.full_messages
-      redirect_to admin_new_password_path
+      redirect_to admin_new_password_path(id: user.id)
     end
   end
 

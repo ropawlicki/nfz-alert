@@ -1,6 +1,6 @@
 <% if flash[:alert] %>
-  <div class='flash-alert'>
-    <% flash.each do |type, msg| %>
+  <div class="alert alert-danger" role="alert">
+    <% flash[:alert].each do |msg| %>
       <%= msg %>
     <% end %>
   </div>

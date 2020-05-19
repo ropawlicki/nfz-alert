@@ -1,11 +1,9 @@
-<div class="container">
+<div class="header">
+  <h2>Wyślij link z potwierdzeniem rejestracji</h2>
+</div>
 
-  <div class="header">
-    <h2>Wyślij link z potwierdzeniem rejestracji</h2>
-  </div>
-
-  <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
+<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="form-group">
     <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "E-mail",
@@ -18,5 +16,3 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
-
-</div>
