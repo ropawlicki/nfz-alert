@@ -1,9 +1,10 @@
 class ResponseParser
 
+  VALID_KEYS = ["benefit", "provider", "place", "address", "phone", "toilet", "ramp", "car-park", "elevator", "locality"].freeze
+
   def self.call(response)
-    valid_keys = ["benefit", "provider", "place", "address", "phone", "toilet", "ramp", "car-park", "elevator",
-      "locality"]
-    response["attributes"].slice(*valid_keys).merge(response["attributes"]["dates"].slice("date"))
+    attributes = response.fetch("attributes")
+    attributes.slice(*VALID_KEYS).merge(attributes.fetch("dates").slice("date"))
   end
 
 end

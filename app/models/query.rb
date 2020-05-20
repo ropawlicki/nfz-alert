@@ -3,6 +3,7 @@ class Query < ApplicationRecord
   has_many :users, through: :user_queries
   has_many :query_results, dependent: :destroy
   has_many :results, through: :query_results
+  belongs_to :province_code, foreign_key: :code, optional: true
 
   validates :benefit, uniqueness: { scope: [ :province, :locality, :case ] }
   validates :benefit, :province, :locality, :case, presence: true

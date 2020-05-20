@@ -5,8 +5,16 @@ class ResponseSaver
     response["data"].each do |response|
       begin
         response = ResponseParser.call(response)
-        result = Result.find_by(benefit: response["benefit"], provider: response["provider"], place: response["place"],
-          address: response["address"])
+        next if response["date"] < DateTime.now
+        
+        result = 
+          Result
+          .find_by(
+            benefit: response.fetch("benefit").squish, 
+            provider: response.fetch("provider").squish, 
+            place: response.fetch("place").squish,
+            address: response.fetch("address").squish
+          )
         if result.nil?
           result = Result.create(response)
         else
