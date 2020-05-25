@@ -1,8 +1,9 @@
 class QueriesController < ApplicationController
 
   def index
-    @user_queries = current_user.queries.map { |q| q.decode_province! }
-    #@user_queries = current_user.queries.includes(:province_code)    
+    #@user_queries = current_user.queries.map { |q| q.decode_province! }
+    @user_queries = current_user.queries
+    p @user_queries 
   end
 
   def result_display
