@@ -3,17 +3,36 @@ class Query < ApplicationRecord
   has_many :users, through: :user_queries
   has_many :query_results, dependent: :destroy
   has_many :results, through: :query_results
-  belongs_to :province_code, foreign_key: :province, optional: true
+  #belongs_to :province_code, foreign_key: :province
 
-  validates :benefit, uniqueness: { scope: [ :locality, :case ] }
-  validates :benefit, :locality, :case, presence: true
+  validates :benefit, uniqueness: { scope: [:province, :locality, :case ] }
+  validates :benefit, :locality, :case, :province, presence: true
 
   before_validation :capitalize_parameters, on: :create
 
-  #def decode_province!
-    #self.province = ProvinceCode.find_by_code(self.province).name
-    #self
-  #end
+  PROVINCE_CODES = {
+    "01" => "Dolnośląskie",
+    "02" => "Kujawsko-pomorskie",
+    "03" => "Lubelskie",
+    "04" => "Lubuskie",
+    "05" => "Łódzkie",
+    "06" => "Małopolskie",
+    "07" => "Mazowieckie",
+    "08" => "Opolskie",
+    "09" => "Podkarpackie",
+    "10" => "Podlaskie",
+    "11" => "Pomorskie",
+    "12" => "Śląskie",
+    "13" => "Świętokrzyskie",
+    "14" => "Warmińsko-mazurskie",
+    "15" => "Wielkopolskie",
+    "16" => "Zachodnio-pomorskie"
+  }
+
+  def decode_province!
+    self.province = PROVINCE_CODES.fetch(self.province)
+    self
+  end
 
   private
   
