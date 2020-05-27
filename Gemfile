@@ -28,6 +28,7 @@ gem 'jquery-rails', '~> 4.3.5'
 gem 'sidekiq', '~> 6.0.5'
 gem 'sidekiq-scheduler', '~> 3.0.1'
 gem 'sidekiq-batch', '~> 0.1.6'
+gem 'will_paginate', '~> 3.1.6'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

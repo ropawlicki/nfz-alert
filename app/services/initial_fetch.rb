@@ -5,7 +5,7 @@ class InitialFetch
     response["data"].each do |response|
       begin
         response = ResponseParser.call(response)
-        result = Result.find_or_create_by(response)
+        result = Result.find_or_create_by(response) if response.fetch("date") > DateTime.now
         result.query_results.find_or_create_by(query_id: query_id)
       rescue StandardError
       end

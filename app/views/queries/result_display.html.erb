@@ -10,8 +10,12 @@
   <%= javascript_pack_tag 'set_visit_time' %>
 <% end %>
 
+<div class="box-list">
+  <%= render "shared/pagination" %>
+  <%= render partial: "shared/result", collection: @query_results, locals: { user_query: @user_query } %>
+  <%= render "shared/pagination" %>
+</div>
 
-<%= render partial: "shared/result", collection: @query_results, locals: { user_query: @user_query } %>
-<%= link_to "Powrót", queries_path %>
+<%= button_to "Powrót", queries_path, method: :get %>
 
 
