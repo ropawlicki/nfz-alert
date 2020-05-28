@@ -1,1 +1,11 @@
-<%= render partial: "shared/query", collection: @user_queries %>
+<div class="header">
+  <h1>Wyszukiwania</h1>
+</div>
+
+<%= button_to "Nowe wyszukiwanie", queries_new_path, method: :get %>
+
+<div class="box-list">
+  <%= render partial: "shared/pagination", locals: { resource: @user_queries } %>
+  <%= render partial: "shared/query", collection: @user_queries %>
+  <%= render partial: "shared/pagination", locals: { resource: @user_queries } %>
+</div>

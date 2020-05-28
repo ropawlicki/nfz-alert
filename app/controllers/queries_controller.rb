@@ -1,7 +1,8 @@
 class QueriesController < ApplicationController
 
   def index
-    @user_queries = current_user.queries.map { |q| q.decode_province! }
+    @user_queries = current_user.queries.paginate(page: params[:page], per_page: 10)
+    @user_queries.each { |q| q.decode_province! }
     #@user_queries = current_user.queries.includes(:province_code)
   end
 
@@ -31,6 +32,8 @@ class QueriesController < ApplicationController
   end
 
   def destroy
+    current_user.user_queries.find(params[:id]).destroy
+    redirect_to queries_path
   end
 
   def update_results_visit

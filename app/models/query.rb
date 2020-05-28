@@ -5,7 +5,7 @@ class Query < ApplicationRecord
   has_many :results, through: :query_results
   #belongs_to :province_code, foreign_key: :province
 
-  validates :benefit, uniqueness: { scope: [:province, :locality, :case ] }
+  validates :benefit, uniqueness: { scope: [:benefit, :province, :locality, :case ] }
   validates :benefit, :locality, :case, :province, presence: true
 
   before_validation :capitalize_parameters, on: :create

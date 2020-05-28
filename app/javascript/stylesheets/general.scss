@@ -51,20 +51,22 @@ p {
   margin-bottom: 2%;
 }
 
-  input, select {
-    padding: 1%;
-    border-radius: 5px;
-    outline: none;
-  }
+//buttons and fields
 
-  .button input, .button_to input {
-    background-color: $main-color;
-    color: white;
-  }
+input, select {
+  padding: 1%;
+  border-radius: 5px;
+  outline: none;
+}
 
-  .a {
-    color: $link-color;
-  }
+.button input, .button_to input {
+  background-color: $main-color;
+  color: white;
+}
+
+.a {
+  color: $link-color;
+}
 
 //box
 
@@ -88,6 +90,32 @@ p {
     padding-right: 17%;
     border-radius: 5px
   }
+
+.query-box {
+  border: 2px solid lightblue;
+  border-radius: 5px;
+  margin-top: 1.5%;
+  margin-bottom: 1.5%;
+  padding: 1%;
+  display: flex;
+  line-height: 230%;
+
+  #results-button { 
+    position: absolute;
+    top: 2%;
+    right: 2%
+  }
+  
+  #destroy-button {
+    position: absolute;
+    bottom: 2% ;
+    right: 2%
+  }
+
+  .button_to input {
+    padding: 3% 10%
+  }
+}
 
 //box-list
 
