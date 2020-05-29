@@ -11,7 +11,7 @@
   <div class="col-4 text-right"> 
     <p><strong>Najbliższy termin wizyty:</strong></p>
     <p><%= result.date.to_datetime.strftime("%-d.%m.%Y") %></p>
-    <% if result.created_at > @user_query.visited_results_at %>
+    <% if @user_query && result.created_at > @user_query.visited_results_at %>
       <div class="new-info">NOWY</div>
     <% end %>
   </div>

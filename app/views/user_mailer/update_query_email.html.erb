@@ -1,10 +1,16 @@
-<h1>Nowe terminy</h1>
+<%= stylesheet_pack_tag 'application', media: 'all' %>
+
+<header>
+  <h1>Nowe terminy</h1>
+<header>
 
 <% @queries.each do |q| %>
-  <h2><%= q.benefit %></h2>
-  <% q.results.each do |r| %>
-    <p><%= r.benefit %></p>
-  <% end %>
+  <div class='query'>
+    <%= q.benefit %>,
+    <% if q.case == 2 %>
+        <strong>pilny przypadek,</strong>
+    <% end %>
+    <%= "#{q.locality}, #{q.province}" %>
+  </div>
+  <%= render partial: "shared/mailer_result", collection: q.results %>
 <% end %>
-
-
