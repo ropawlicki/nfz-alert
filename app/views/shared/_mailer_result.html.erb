@@ -1,0 +1,13 @@
+<div class="mail-result-box">
+  <div>
+    <p><strong>Najbliższy termin wizyty:</strong></p>
+    <p><%= mailer_result.date.to_datetime.strftime("%-d.%m.%Y") %></p><br>
+    <p>
+      <strong><%= mailer_result.benefit %></strong>
+    </p>
+    <p><%= mailer_result.provider %></p>
+    <p><%= mailer_result.place %></p>
+    <p><strong>Adres:</strong> <%= mailer_result.locality%>, <%= mailer_result.address %></p>
+    <p><strong>Tel.</strong> <%= mailer_result.phone %></p>
+  </div>
+</div>
