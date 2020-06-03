@@ -22,7 +22,6 @@ class QueriesController < ApplicationController
     end
     permitted_params.each_value { |p| p.capitalize! }
     query = Query.find_by(permitted_params)
-    p "QUERY", query
     if query.nil?
       query = Query.create(permitted_params)
       InitialSearch.call(query.id)

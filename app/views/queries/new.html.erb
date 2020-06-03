@@ -26,7 +26,7 @@
     <%= f.text_field :locality, placeholder: "Miejscowość" %>
   </div>
   <div class="form-group">
-    <%= f.select(:province, ProvinceCode.all.collect {|p| [ p.name, p.code] }) %>
+    <%= f.select(:province, Query::PROVINCE_CODES.map{ |pc| [ pc[1], pc[0] ] }) %>
   </div>
   <div class="form-group button">
     <input type="submit" name="commit" value="Zapisz" data-disable-with="Zapisz" >
