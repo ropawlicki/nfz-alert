@@ -31,7 +31,7 @@ class QueriesController < ApplicationController
   end
 
   def destroy
-    current_user.user_queries.find(params[:id]).destroy
+    current_user.user_queries.find_by(query_id: params[:id]).destroy
     redirect_to queries_path
   end
 
