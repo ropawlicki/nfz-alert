@@ -7,7 +7,7 @@
       <% end %>
     <% else %>
       <li class="nav-item active"><%= link_to('Zaloguj się', new_user_session_path, method: :get, class: "text-white nav-link")%></li>
-      <li class="nav-item active"><%= link_to('O aplikacji', unauthenticated_root_path, method: :get, class: "text-white nav-link")%></li>
+      <li class="nav-item active"><%= link_to('O aplikacji', about_path, method: :get, class: "text-white nav-link")%></li>
     <% end %>
   </ul>
   <ul class="navbar-nav ml-auto">
@@ -19,8 +19,8 @@
           </a>
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <a class="dropdown-item" rel="nofollow" data-method="get" href="/users/edit">Edycja konta</a>
-          <a class="dropdown-item" rel="nofollow" href="#">O aplikacji</a>
+          <a class="dropdown-item" rel="nofollow" data-method="get" href="/about">Edycja konta</a>
+          <a class="dropdown-item" rel="nofollow" href="/about">O aplikacji</a>
           <a class="dropdown-item" rel="nofollow" data-method="delete" href="/users/sign_out">Wyloguj się</a>
         </div>
       </li>

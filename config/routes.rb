@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'queries/new'
   get 'query', to: 'queries#result_display'
   post 'query/destroy', to: 'queries#destroy'
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
   get 'admin/new_password'
   post 'admin/update_password'
   get 'admin/destroy'
+  get 'about', to: 'app_info#about_app'
 
   devise_for :users
 
