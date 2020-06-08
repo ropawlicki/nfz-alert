@@ -11,15 +11,22 @@
 <% end %>
 
 <% if @query_results.empty? %>
-  Dla tego wyszukiwania nie ma w tej chwili żadnych wyników. Damy Ci znać, jeśli się pojawią.
+
+  <p>Dla tego wyszukiwania nie ma w tej chwili żadnych wyników. Damy Ci znać, jeśli się pojawią.<p>
+  <br>
+  <%= button_to "Powrót", queries_path, method: :get %>
+
+<% else %>
+
+  <%= button_to "Powrót", queries_path, method: :get %>
+  <div class="box-list">
+    <%= render partial: "shared/result", collection: @query_results, locals: { user_query: @user_query } %>
+  </div>
+
+  <% if @query_results.size > 5 %>
+    <%= button_to "Powrót", queries_path, method: :get %>
+  <% end %>
+
 <% end %>
-
-<%= button_to "Powrót", queries_path, method: :get %>
-
-<div class="box-list">
-  <%= render partial: "shared/result", collection: @query_results, locals: { user_query: @user_query } %>
-</div>
-
-<%= button_to "Powrót", queries_path, method: :get %>
 
 
