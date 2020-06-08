@@ -9,7 +9,7 @@ class QueriesController < ApplicationController
   def result_display
     query = Query.find(params[:id])
     @user_query = current_user.user_queries.find_by(query_id: params[:id])
-    @query_results = query.results.order("date").paginate(page: params[:page], per_page: 10)
+    @query_results = query.results.order("date")
   end
 
   def new

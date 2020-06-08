@@ -12,6 +12,12 @@
   </div>
 <% end %>
 
+<div class="alert alert-info">
+  W polu "Świadczenie" należy wpisać nazwę świadczenia (np. "świadczenia z zakresu ortopedii"),<br>
+  oddziału (np. "oddział neurologiczny"), poradni (np. "poradnia alergologiczna)<br>
+  lub usługi medycznej (np. "rehabilitacja kardiologiczna")
+</div>
+
 <%= form_with(url: queries_create_path, method: :post) do |f| %>
   <%= render 'shared/flash_alert' %>
   <div class="form-group">
@@ -20,7 +26,7 @@
     </label>
   </div>
   <div class="form-group">
-    <%= f.text_field :benefit, placeholder: "Usługa, poradnia lub oddział" %>
+    <%= f.text_field :benefit, placeholder: "Świadczenie" %>
   </div>
   <div class="form-group">
     <%= f.text_field :locality, placeholder: "Miejscowość" %>

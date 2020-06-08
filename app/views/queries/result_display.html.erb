@@ -14,10 +14,10 @@
   Dla tego wyszukiwania nie ma w tej chwili żadnych wyników. Damy Ci znać, jeśli się pojawią.
 <% end %>
 
+<%= button_to "Powrót", queries_path, method: :get %>
+
 <div class="box-list">
-  <%= render partial: "shared/pagination", locals: { resource: @query_results } %>
   <%= render partial: "shared/result", collection: @query_results, locals: { user_query: @user_query } %>
-  <%= render partial: "shared/pagination", locals: { resource: @query_results } %>
 </div>
 
 <%= button_to "Powrót", queries_path, method: :get %>
