@@ -10,6 +10,10 @@
   <%= javascript_pack_tag 'set_visit_time' %>
 <% end %>
 
+<div class='results-header'>
+  <h1>Wyniki wyszukiwania dla zapytania <%= @query.benefit %>, <%= @query.locality %>, <%= @query.province %></h1>
+</div>
+
 <% if @query_results.empty? %>
 
   <p>Dla tego wyszukiwania nie ma w tej chwili żadnych wyników. Damy Ci znać, jeśli się pojawią.<p>
@@ -18,7 +22,6 @@
 
 <% else %>
 
-  <%= button_to "Powrót", queries_path, method: :get %>
   <div class="box-list">
     <%= render partial: "shared/result", collection: @query_results, locals: { user_query: @user_query } %>
   </div>

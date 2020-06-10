@@ -1,5 +1,5 @@
 <div class="query-box">
-  <div class="col-8">
+  <div class="col-4">
     <p>
       Świadczenie: <strong><%= query.benefit %></strong>
       <% if query.case == 2 %>
@@ -8,6 +8,20 @@
     </p>
     <p>Miejscowość: <strong><%= query.locality%></strong></p>
     <p>Województwo: <strong><%= query.province %></strong></p>
+  </div>
+  <div class="col-4">
+    <p>Data utworzenia: <strong><%= query.user_queries.find { |q| q.user_id == current_user.id }.
+    created_at.strftime("%-d.%m.%Y") %></strong></p>
+    <p>Liczba dostępnych terminów: <strong><%= query.results.size %></strong>
+    <p>Najbliższe terminy: 
+      <% unless query.results.empty? %>
+        <strong>
+          <%= query.results.map { |r| r.date.to_datetime.strftime("%-d.%m.%Y") }[0..1].join(', ') %>
+        </strong>
+      <% else %>
+        <strong>Brak wyników</strong>
+      <% end %>
+    </p>
   </div>
   <div class="col-4 text-right">
     <div id="results-button"><%= button_to "Wyniki", query_path, method: :get, params: { id: query.id } %></div>
