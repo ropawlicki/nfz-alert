@@ -16,7 +16,7 @@
     <p>Najbliższe terminy: 
       <% unless query.results.empty? %>
         <strong>
-          <%= query.results.map { |r| r.date.to_datetime.strftime("%-d.%m.%Y") }[0..1].join(', ') %>
+          <%= query.results.map { |r| r.date }.uniq.sort[0..1].map { |d| d.to_datetime.strftime('%-d.%m.%y') }.join(', ') %>
         </strong>
       <% else %>
         <strong>Brak wyników</strong>
