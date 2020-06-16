@@ -26,9 +26,7 @@
     <%= render partial: "shared/result", collection: @query_results, locals: { user_query: @user_query } %>
   </div>
 
-  <% if @query_results.size > 5 %>
-    <%= button_to "Powrót", queries_path, method: :get %>
-  <% end %>
+  <%= button_to "Powrót", queries_path, method: :get %>
 
 <% end %>
 
