@@ -1,10 +1,13 @@
 # frozen_string_literal: true
 
+# query controller
 class QueriesController < ApplicationController
   def index
-    @queries = current_user.queries.order(:created_at).includes(:results, :user_queries).paginate(page: params[:page], per_page: 10)
+    @queries = current_user
+               .queries.order(:created_at)
+               .includes(:results, :user_queries)
+               .paginate(page: params[:page], per_page: 10)
     @queries.each(&:decode_province!)
-    # @user_queries = current_user.queries.includes(:province_code)
   end
 
   def result_display
@@ -16,18 +19,12 @@ class QueriesController < ApplicationController
   def new; end
 
   def create
-    permitted_params = query_params
+    params = query_params
     if params.values.any?(&:empty?)
       flash[:warning] = 'Oba pola muszą być wypełnione'
       redirect_to queries_new_path and return
     end
-    permitted_params.each_value(&:capitalize!)
-    query = Query.find_by(permitted_params)
-    if query.nil?
-      query = Query.create(permitted_params)
-      InitialSearch.call(query.id)
-    end
-    query.user_queries.create(user_id: current_user.id)
+    query = CreateQuery.call(params, current_user.id)
     redirect_to query_path(id: query.id)
   end
 
