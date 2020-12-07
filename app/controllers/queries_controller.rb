@@ -7,6 +7,7 @@ class QueriesController < ApplicationController
                .queries.order(:created_at)
                .includes(:results, :user_queries)
                .paginate(page: params[:page], per_page: 10)
+    p @queries
     @queries.each(&:decode_province!)
   end
 

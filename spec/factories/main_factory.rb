@@ -1,18 +1,19 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :query do
-    self.case { 1 }
-    province { '01' }
-    locality { 'testowo' }
-    benefit { 'testolog' }
-  end
-
   factory :user do
     email { 'testosław@testmail.com' }
     password { '123456' }
     last_sent_at { Time.zone.now }
     confirmed_at { Time.zone.now }
+  end
+
+  factory :query do
+    self.case { 1 }
+    province { '01' }
+    locality { 'testowo' }
+    benefit { 'testolog' }
+    created_at { Time.zone.now }
   end
 
   factory :result do
