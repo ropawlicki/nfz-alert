@@ -1,27 +1,27 @@
-class QueriesController < ApplicationController
+# frozen_string_literal: true
 
+class QueriesController < ApplicationController
   def index
     @queries = current_user.queries.order(:created_at).includes(:results, :user_queries).paginate(page: params[:page], per_page: 10)
-    @queries.each { |q| q.decode_province! }
-    #@user_queries = current_user.queries.includes(:province_code)
+    @queries.each(&:decode_province!)
+    # @user_queries = current_user.queries.includes(:province_code)
   end
 
   def result_display
     @query = Query.find(params[:id]).decode_province!
     @user_query = current_user.user_queries.find_by(query_id: params[:id])
-    @query_results = @query.results.order("date")
+    @query_results = @query.results.order('date')
   end
 
-  def new
-  end
+  def new; end
 
   def create
     permitted_params = query_params
     if params.values.any?(&:empty?)
-      flash[:warning] = "Oba pola muszą być wypełnione"
+      flash[:warning] = 'Oba pola muszą być wypełnione'
       redirect_to queries_new_path and return
     end
-    permitted_params.each_value { |p| p.capitalize! }
+    permitted_params.each_value(&:capitalize!)
     query = Query.find_by(permitted_params)
     if query.nil?
       query = Query.create(permitted_params)
@@ -43,8 +43,7 @@ class QueriesController < ApplicationController
 
   private
 
-    def query_params
-      params.permit(:case, :province, :locality, :benefit)
-    end
-
+  def query_params
+    params.permit(:case, :province, :locality, :benefit)
+  end
 end

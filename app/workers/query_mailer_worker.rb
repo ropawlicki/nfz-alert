@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class QueryMailerWorker
   include Sidekiq::Worker
 
@@ -6,5 +8,4 @@ class QueryMailerWorker
       UserMailer.update_query_email(u.id).deliver_later
     end
   end
-  
 end

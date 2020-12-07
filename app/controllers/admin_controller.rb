@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AdminController < ApplicationController
   before_action :admin_check
 
@@ -28,7 +30,7 @@ class AdminController < ApplicationController
 
   private
 
-    def admin_check
-      redirect_to authenticated_root_path if !current_user.admin?
-    end
+  def admin_check
+    redirect_to authenticated_root_path unless current_user.admin?
+  end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AppointmentUpdateBatch
   include Sidekiq::Worker
 
@@ -7,7 +9,7 @@ class AppointmentUpdateBatch
     b.jobs { AppointmentUpdateWorker.perform_async }
   end
 
-  def on_complete(status, options)
+  def on_complete(_status, _options)
     ResultCleanerWorker.perform_async
   end
 end

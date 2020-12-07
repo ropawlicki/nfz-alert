@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddValidationAndMailingStampsToResult < ActiveRecord::Migration[6.0]
   def change
     add_column :results, :validated_at, :datetime, default: -> { 'CURRENT_TIMESTAMP' }

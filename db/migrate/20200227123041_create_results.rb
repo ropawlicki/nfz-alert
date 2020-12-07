@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateResults < ActiveRecord::Migration[6.0]
   def change
     create_table :results do |t|
@@ -16,6 +18,6 @@ class CreateResults < ActiveRecord::Migration[6.0]
       t.timestamps
     end
 
-    add_index :results, [:benefit, :provider, :place, :address], unique: true
+    add_index :results, %i[benefit provider place address], unique: true
   end
 end

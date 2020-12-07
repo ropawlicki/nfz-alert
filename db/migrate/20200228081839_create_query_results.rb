@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateQueryResults < ActiveRecord::Migration[6.0]
   def change
     create_table :query_results do |t|
@@ -7,6 +9,6 @@ class CreateQueryResults < ActiveRecord::Migration[6.0]
       t.timestamps
     end
 
-    add_index :query_results, [:query_id, :result_id], unique: true
+    add_index :query_results, %i[query_id result_id], unique: true
   end
 end

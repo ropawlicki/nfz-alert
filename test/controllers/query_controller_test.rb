@@ -1,19 +1,20 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class QueryControllerTest < ActionDispatch::IntegrationTest
-  test "should get create" do
+  test 'should get create' do
     get query_create_url
     assert_response :success
   end
 
-  test "should get destroy" do
+  test 'should get destroy' do
     get query_destroy_url
     assert_response :success
   end
 
-  test "should get fetch" do
+  test 'should get fetch' do
     get query_fetch_url
     assert_response :success
   end
-
 end

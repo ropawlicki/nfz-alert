@@ -1,5 +1,6 @@
-Rails.application.routes.draw do
+# frozen_string_literal: true
 
+Rails.application.routes.draw do
   get 'queries/new'
   get 'query', to: 'queries#result_display'
   post 'query/destroy', to: 'queries#destroy'

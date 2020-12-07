@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 class CreateQueries < ActiveRecord::Migration[6.0]
   def change
     create_table :queries do |t|
-    
       t.integer :case
       t.string :province
       t.string :locality
@@ -10,6 +11,6 @@ class CreateQueries < ActiveRecord::Migration[6.0]
       t.timestamps
     end
 
-    add_index :queries, [:case, :province, :locality, :benefit], unique: true
+    add_index :queries, %i[case province locality benefit], unique: true
   end
 end
