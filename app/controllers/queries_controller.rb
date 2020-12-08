@@ -4,11 +4,11 @@
 class QueriesController < ApplicationController
   def index
     @queries = current_user
-               .queries.order(:created_at)
-               .includes(:results, :user_queries)
-               .paginate(page: params[:page], per_page: 10)
-    p @queries
-    @queries.each(&:decode_province!)
+               .queries
+               .includes(:results) 
+               .includes(:user_queries).where(user_queries: { user_id: current_user.id })
+               .order("user_queries.created_at desc")
+               .each(&:decode_province!)
   end
 
   def result_display
