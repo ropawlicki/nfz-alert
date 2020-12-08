@@ -2,6 +2,8 @@
 
 # query controller
 class QueriesController < ApplicationController
+  before_action :require_authentication, except: [:update_results_visit]
+
   def index
     @queries = current_user
                .queries
@@ -43,5 +45,9 @@ class QueriesController < ApplicationController
 
   def query_params
     params.permit(:case, :province, :locality, :benefit)
+  end
+
+  def require_authentication
+    redirect_to unauthenticated_root_path if current_user.nil?
   end
 end
