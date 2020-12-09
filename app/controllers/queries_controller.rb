@@ -7,9 +7,9 @@ class QueriesController < ApplicationController
   def index
     @queries = current_user
                .queries
-               .includes(:results) 
+               .includes(:results)
                .includes(:user_queries).where(user_queries: { user_id: current_user.id })
-               .order("user_queries.created_at desc")
+               .order('user_queries.created_at desc')
                .each(&:decode_province!)
   end
 

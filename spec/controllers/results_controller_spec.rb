@@ -26,9 +26,9 @@ RSpec.describe ResultsController, type: :controller do
     end
 
     it 'assigns results sorted by date (from soonest to latest)' do
-      sooner_result = create(:result, date: "2019-01-01")
+      sooner_result = create(:result, date: '2019-01-01')
       QueryResult.create(query_id: @query.id, result_id: sooner_result.id)
-      later_result = create(:result, date: "2020-01-01")
+      later_result = create(:result, date: '2020-01-01')
       QueryResult.create(query_id: @query.id, result_id: later_result.id)
       get :index, params: { id: @query.id }
       results = assigns(:results)
