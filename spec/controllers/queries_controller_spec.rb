@@ -21,4 +21,25 @@ RSpec.describe QueriesController, type: :controller do
       expect(queries.second.benefit).to eq('Newer but inserted sooner by user')
     end
   end
+
+  describe 'GET show' do
+    before(:each) do
+      @query = create(:query)
+      @user_query = UserQuery.create(user_id: @user.id, query_id: @query.id)
+    end
+
+    it 'assigns query' do
+      get :show, params: { id: @query.id }
+      query = assigns(:query)
+
+      expect(query.id).to eq(@query.id)
+    end
+
+    it 'assigns user_query' do
+      get :show, params: { id: @query.id }
+      user_query = assigns(:user_query)
+
+      expect(user_query.id).to eq(@user_query.id)
+    end
+  end
 end

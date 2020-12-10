@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   get 'queries/new'
-  get 'query', to: 'queries#result_display'
+  get 'query/:id', to: 'queries#show', as: 'query'
   post 'query/destroy', to: 'queries#destroy'
   get 'queries', to: 'queries#index'
   post 'queries/create'

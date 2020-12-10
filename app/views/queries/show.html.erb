@@ -14,7 +14,7 @@
   <h2>Wyniki wyszukiwania dla zapytania "<%= @query.benefit %>, <%= @query.locality %>, <%= @query.province %>"</h2>
 </div>
 
-<% if @query_results.empty? %>
+<% if @query.results.empty? %>
 
   <p>Dla tego wyszukiwania nie ma w tej chwili żadnych wyników. Damy Ci znać, jeśli się pojawią.<p>
   <br>
@@ -23,7 +23,7 @@
 <% else %>
 
   <div class="box-list">
-    <%= render partial: "shared/result", collection: @query_results, locals: { user_query: @user_query } %>
+    <%= render partial: "shared/result", collection: @query.results.order('date'), locals: { user_query: @user_query } %>
   </div>
 
   <%= button_to "Powrót", queries_path, method: :get %>
