@@ -11,6 +11,7 @@ class Query < ApplicationRecord
   validates :benefit, :locality, :case, :province, presence: true
 
   before_validation :capitalize_parameters, on: :create
+  before_validation :set_hash_id, prepend: true, if: proc { |article| article.hash_id.nil? }
 
   PROVINCE_CODES = {
     '01' => 'Dolnośląskie',
@@ -41,5 +42,9 @@ class Query < ApplicationRecord
   def capitalize_parameters
     self.locality = locality.capitalize
     self.benefit = benefit.capitalize
+  end
+
+  def set_hash_id
+    self.hash_id = SecureRandom.urlsafe_base64(10)
   end
 end

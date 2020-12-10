@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   get 'queries/new'
-  get 'query/:id', to: 'queries#show', as: 'query'
+  get 'query/:hash_id', to: 'queries#show', as: 'query'
   post 'query/destroy', to: 'queries#destroy'
   get 'queries', to: 'queries#index'
   post 'queries/create'

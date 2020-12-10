@@ -14,8 +14,8 @@ class QueriesController < ApplicationController
   end
 
   def show
-    @query = Query.find(params[:id]).decode_province!
-    @user_query = current_user.user_queries.find_by(query_id: params[:id])
+    @query = Query.find_by(hash_id: params[:hash_id]).decode_province!
+    @user_query = current_user.user_queries.find_by(query_id: @query.id)
   end
 
   def new; end
@@ -27,7 +27,7 @@ class QueriesController < ApplicationController
       redirect_to queries_new_path and return
     end
     query = CreateQuery.call(params, current_user.id)
-    redirect_to query_path(id: query.id)
+    redirect_to query_path(hash_id: query.hash_id)
   end
 
   def destroy
@@ -44,5 +44,9 @@ class QueriesController < ApplicationController
 
   def query_params
     params.permit(:case, :province, :locality, :benefit)
+  end
+
+  def set_query
+    @query = Query.friendly.find(params[:hash_id])
   end
 end

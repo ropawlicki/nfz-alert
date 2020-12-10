@@ -28,15 +28,20 @@ RSpec.describe QueriesController, type: :controller do
       @user_query = UserQuery.create(user_id: @user.id, query_id: @query.id)
     end
 
+    it 'gets query through hash_id' do
+      get :show, params: { hash_id: @query.hash_id }
+      assert_response 200
+    end
+
     it 'assigns query' do
-      get :show, params: { id: @query.id }
+      get :show, params: { hash_id: @query.hash_id }
       query = assigns(:query)
 
       expect(query.id).to eq(@query.id)
     end
 
     it 'assigns user_query' do
-      get :show, params: { id: @query.id }
+      get :show, params: { hash_id: @query.hash_id }
       user_query = assigns(:user_query)
 
       expect(user_query.id).to eq(@user_query.id)
