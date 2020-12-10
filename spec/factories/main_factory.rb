@@ -21,6 +21,5 @@ FactoryBot.define do
     provider { Faker::Books::Lovecraft.location }
     place { Faker::Address.city }
     address { Faker::Address.street_name }
-    date { "2020-01-01" }
   end
 end
