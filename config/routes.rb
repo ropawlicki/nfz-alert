@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post 'query/destroy', to: 'queries#destroy'
   get 'queries', to: 'queries#index'
   post 'queries/create'
-  post 'visit_update/:id', to: 'queries#update_results_visit'
+  put 'user_queries/:id', to: 'user_queries#update'
   post 'benefits/fetch'
   get 'admin/index'
   get 'admin/new_password'
