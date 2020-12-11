@@ -2,7 +2,7 @@
 
 # query controller
 class QueriesController < ApplicationController
-  before_action :require_authentication, except: [:update_results_visit]
+  before_action :require_authentication
 
   def index
     @queries = current_user
@@ -33,11 +33,6 @@ class QueriesController < ApplicationController
   def destroy
     current_user.user_queries.find_by(query_id: params[:id]).destroy
     redirect_to queries_path
-  end
-
-  def update_results_visit
-    user_query = UserQuery.find(params[:id])
-    user_query.update_attribute(:visited_results_at, Time.zone.now)
   end
 
   private
