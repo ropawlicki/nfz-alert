@@ -28,9 +28,13 @@ RSpec.describe QueriesController, type: :controller do
       @user_query = UserQuery.create(user_id: @user.id, query_id: @query.id)
     end
 
-    it 'gets query through hash_id' do
+    it 'returns 200 response with existing hash_id' do
       get :show, params: { hash_id: @query.hash_id }
       assert_response 200
+    end
+
+    it 'returns 404 response with non-existing hash_id' do
+      expect { get(:show, params: { hash_id: "#{@query.hash_id}-" }) }.to raise_error(ActiveRecord::RecordNotFound)
     end
 
     it 'assigns query' do
