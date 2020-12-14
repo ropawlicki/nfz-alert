@@ -40,8 +40,4 @@ class QueriesController < ApplicationController
   def query_params
     params.permit(:case, :province, :locality, :benefit)
   end
-
-  def set_query
-    @query = Query.friendly.find(params[:hash_id])
-  end
 end
