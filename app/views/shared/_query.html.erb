@@ -25,6 +25,11 @@
   </div>
   <div class="col-3 text-right">
     <div id="results-button"><%= button_to "Wyniki", query_path(query.hash_id), method: :get %></div>
-    <div id="destroy-button"><%= button_to "Usuń", query_destroy_path, params: { id: query.id }, data: { confirm: "Czy na pewno chcesz to usunąć? "} %></div>
+    <div id="destroy-button">
+      <%= button_to "Usuń",
+      destroy_user_query_path(query.id),
+      method: :delete,
+      data: { confirm: "Czy na pewno chcesz to usunąć? "} %>
+    </div>
   </div>
 </div>

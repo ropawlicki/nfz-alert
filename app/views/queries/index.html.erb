@@ -6,7 +6,7 @@
   <h2>Wyszukiwania</h2>
 </div>
 
-<%= button_to "Nowe wyszukiwanie", queries_new_path, method: :get %>
+<%= button_to "Nowe wyszukiwanie", new_query_path, method: :get %>
 
 <div class="box-list">
   <%= render partial: "shared/query", collection: @queries %>

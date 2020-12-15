@@ -1,13 +1,18 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'queries/new'
-  get 'query/:hash_id', to: 'queries#show', as: 'query'
-  post 'query/destroy', to: 'queries#destroy'
-  get 'queries', to: 'queries#index'
-  post 'queries/create'
-  put 'user_queries/:id', to: 'user_queries#update'
-  post 'benefits/fetch'
+  scope :queries do
+    get '/', to: 'queries#index', as: 'queries'
+    post '/', to: 'queries#create', as: 'create_query'
+    get '/new', to: 'queries#new', as: 'new_query'
+    get '/:hash_id', to: 'queries#show', as: 'query'
+  end
+
+  scope :user_queries do
+    put '/:id', to: 'user_queries#update', as: 'update_user_query'
+    delete '/:id', to: 'user_queries#destroy', as: 'destroy_user_query'
+  end
+
   get 'admin/index'
   get 'admin/new_password'
   post 'admin/update_password'
