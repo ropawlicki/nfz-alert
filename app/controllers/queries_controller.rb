@@ -3,6 +3,7 @@
 # query controller
 class QueriesController < ApplicationController
   before_action :require_authentication
+  before_action :form_filling_check, only: :create
 
   def index
     @queries = current_user
@@ -14,12 +15,7 @@ class QueriesController < ApplicationController
   end
 
   def create
-    params = query_params
-    if params.values.any?(&:empty?)
-      flash[:warning] = 'Oba pola muszą być wypełnione'
-      redirect_to new_query_path and return
-    end
-    query = CreateQuery.call(params, current_user.id)
+    query = CreateQuery.call(query_params, current_user.id)
     redirect_to query_path(hash_id: query.hash_id)
   end
 
@@ -34,5 +30,12 @@ class QueriesController < ApplicationController
 
   def query_params
     params.permit(:case, :province, :locality, :benefit)
+  end
+
+  def form_filling_check
+    if query_params.values.any?(&:empty?)
+      flash[:warning] = 'Wszystkie pola muszą być wypełnione'
+      redirect_to new_query_path and return
+    end
   end
 end
