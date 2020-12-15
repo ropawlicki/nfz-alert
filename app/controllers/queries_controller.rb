@@ -27,7 +27,7 @@ class QueriesController < ApplicationController
 
   def show
     @query = Query.find_by!(hash_id: params[:hash_id]).decode_province!
-    @user_query = current_user.user_queries.find_by(query_id: @query.id)
+    @user_query = current_user.user_queries.find_by!(query_id: @query.id)
   end
 
   private
