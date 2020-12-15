@@ -35,7 +35,7 @@ class QueriesController < ApplicationController
   def form_filling_check
     if query_params.values.any?(&:empty?)
       flash[:warning] = 'Wszystkie pola muszą być wypełnione'
-      redirect_to new_query_path and return
+      redirect_to new_query_path
     end
   end
 end
