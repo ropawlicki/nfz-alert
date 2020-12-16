@@ -8,7 +8,7 @@ class CreateQuery
       query = Query.create(params)
       InitialSearch.call(query.id)
     end
-    query.user_queries.create(user_id: user_id)
+    query.user_queries.find_or_create_by(user_id: user_id)
     query
   end
 end
