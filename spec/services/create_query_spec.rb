@@ -44,25 +44,23 @@ RSpec.describe CreateQuery do
   end
 
   context 'with existing query' do
+    before(:each) do
+      @old_query = create :query
+      @params = { case: @old_query.case.to_s,
+                  province: @old_query.province,
+                  locality: @old_query.locality,
+                  benefit: @old_query.benefit }
+    end
+
     it 'does not create new query' do
-      old_query = create :query
-      params = { case: old_query.case.to_s,
-                 province: old_query.province,
-                 locality: old_query.locality,
-                 benefit: old_query.benefit }
-      CreateQuery.call(params, @user.id)
+      CreateQuery.call(@params, @user.id)
 
       expect(Query.count).to eq 1
     end
 
     it 'does not create new user_query' do
-      old_query = create :query
-      UserQuery.create(user_id: @user.id, query_id: old_query.id)
-      params = { case: old_query.case.to_s,
-                 province: old_query.province,
-                 locality: old_query.locality,
-                 benefit: old_query.benefit }
-      CreateQuery.call(params, @user.id)
+      UserQuery.create(user_id: @user.id, query_id: @old_query.id)
+      CreateQuery.call(@params, @user.id)
 
       expect(UserQuery.count).to eq 1
     end
